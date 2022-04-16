@@ -25,6 +25,8 @@ const resultDivs = document.querySelectorAll ('.results_result');
 const resultWinner = document.querySelector('.results_winner');
 const resultText = document.querySelector('.results_text');
 
+const playAgainBtn = document.querySelector('.play-again');
+
 choiceButtons.forEach( button => {
     button.addEventListener("click", () => {
         const choiceName = button.dataset.choice;
@@ -79,6 +81,20 @@ function displayWinner(results) {
 function isWinner (results) {
     return results[0].beats === results[1].name;
 }
+
+playAgainBtn.addEventListener("click", () => {
+    gameDiv.classList.toggle('hidden');
+    resultsDiv.classList.toggle('hidden');
+
+    resultDivs.forEach(resultDiv => {
+        resultDiv.innerHTML = "";
+        resultDiv.classList.remove('winner');
+    })
+
+    resultText.innerText = "";
+    resultWinner.classList.toggle('hidden');
+    resultsDiv.classList.toggle('show-winner');
+})
 
 btnRules.addEventListener("click", function(){
     modalRules.classList.toggle("show-modal");
