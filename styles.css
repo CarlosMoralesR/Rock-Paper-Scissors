@@ -189,3 +189,50 @@ body {
 .rules-btn:focus {
     border: 2px solid #fff;
 }
+
+.modal {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    background: var(--shadow-med);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+}
+
+.modal_container {
+    background: #fff;
+    border-radius: 0.5rem;
+}
+
+.modal_header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 2rem 2rem 1rem;
+}
+
+.modal_heading {
+    font-size: 1.5rem;
+    color: var(--dark-text);
+}
+
+.close-btn {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+}
+
+.rules-img {
+    padding: 2rem 4rem;
+}
+
+.show-modal {
+    opacity: 1;
+    pointer-events: initial;
+}
