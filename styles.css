@@ -169,6 +169,46 @@ body {
     grid-area: rock;
 }
 
+.results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    grid-template-areas: 
+        "you-title ai-title"
+        "you-picked ai-picked";
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.results_heading {
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    padding: 4rem 0 8rem;
+}
+
+.results_result {
+    min-width: 10rem;
+    min-height: 10rem;
+    background: #16213d;
+    border-radius: 50%;
+}
+
+.results_heading:first-of-type {
+    grid-area: you-title;
+}
+
+.results_heading:last-of-type {
+    grid-area: ai-title;
+}
+
+.results_result:first-of-type {
+    grid-area: you-picked;
+}
+
+.results_result:last-of-type {
+    grid-area: ai-picked;
+}
+
 .rules-btn {
     position: absolute;
     bottom: 2rem;
