@@ -53,10 +53,14 @@ body {
 }
 
 .score {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 
+        "title title title"
+        "score-you divider score-ai";
     align-items: center;
     justify-content: center;
+    text-align: center;
     background: #fff;
     border-radius: 10px;
     width: 150px;
@@ -65,12 +69,29 @@ body {
 }
 
 .score_title {
+    grid-area: title;
     font-size: 1.1rem;
     letter-spacing: 0.1em;
+    font-weight: 500;
     color: var(--score-text);
 }
 
+.score_divider {
+    grid-area: divider;
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--dark-text);
+}
+
 .score_number {
+    grid: score-you;
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--dark-text);
+}
+
+.score_number_ai {
+    grid-area: score-ai;
     font-size: 4rem;
     font-weight: 700;
     color: var(--dark-text);
