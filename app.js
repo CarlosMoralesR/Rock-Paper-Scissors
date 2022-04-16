@@ -22,6 +22,9 @@ const gameDiv = document.querySelector ('.game');
 const resultsDiv = document.querySelector ('.results');
 const resultDivs = document.querySelectorAll ('.results_result');
 
+const resultWinner = document.querySelector('.results_winner');
+const resultText = document.querySelector('.results_text');
+
 choiceButtons.forEach( button => {
     button.addEventListener("click", () => {
         const choiceName = button.dataset.choice;
@@ -33,6 +36,7 @@ choiceButtons.forEach( button => {
 function choose(choice) {
     const aichoice = aiChoose();
     displayResults ([choice, aichoice]);
+    displayWinner([choice, aichoice]);
 }
 
 function aiChoose() {
@@ -53,6 +57,27 @@ function displayResults(results) {
 
     gameDiv.classList.toggle("hidden");
     resultsDiv.classList.toggle("hidden");
+}
+
+function displayWinner(results) {
+    setTimeout(() => {
+        const userWins = isWinner(results);
+        const aiWins = isWinner(results.reverse());
+
+        if(userWins){
+            resultText.innerText = "you win";
+        } else if (aiWins) {
+            resultText.innerText = "you lose";
+        } else {
+            resultText.innerText = "draw";
+        }
+        resultWinner.classList.toggle('hidden');
+        resultsDiv.classList.toggle('show-winner');
+    }, 1000);
+}
+
+function isWinner (results) {
+    return results[0].beats === results[1].name;
 }
 
 btnRules.addEventListener("click", function(){
