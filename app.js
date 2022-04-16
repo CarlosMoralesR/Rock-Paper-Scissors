@@ -27,6 +27,9 @@ const resultText = document.querySelector('.results_text');
 
 const playAgainBtn = document.querySelector('.play-again');
 
+const scoreNumber = document.querySelector('.score_number');
+let score = 0;
+
 choiceButtons.forEach( button => {
     button.addEventListener("click", () => {
         const choiceName = button.dataset.choice;
@@ -68,8 +71,10 @@ function displayWinner(results) {
 
         if(userWins){
             resultText.innerText = "you win";
+            keepScore(1);
         } else if (aiWins) {
             resultText.innerText = "you lose";
+            keepScore(-1);
         } else {
             resultText.innerText = "draw";
         }
@@ -80,6 +85,11 @@ function displayWinner(results) {
 
 function isWinner (results) {
     return results[0].beats === results[1].name;
+}
+
+function keepScore(point) {
+    score += point;
+    scoreNumber.innerText = score;
 }
 
 playAgainBtn.addEventListener("click", () => {
